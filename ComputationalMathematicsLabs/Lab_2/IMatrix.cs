@@ -9,5 +9,6 @@
         Matrix GetDiagonalMatrix();
         Matrix GetMatrixWithoutDiagonal();
         Matrix GetNegativeMatrix();
+        double GetNorm();
     }
 }

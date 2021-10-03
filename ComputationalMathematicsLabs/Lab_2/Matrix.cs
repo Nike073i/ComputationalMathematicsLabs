@@ -1,14 +1,26 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace ComputationalMathematicsLabs.Lab_2
 {
     public class Matrix : IMatrix
     {
+        private int _countSignAfter = 4;
         private double[,] matrix;
         private int _sizeI;
         private int _sizeJ;
         public int SizeI => _sizeI;
         public int SizeJ => _sizeJ;
+
+        public int CountSighAfter
+        {
+            get => _countSignAfter;
+            set
+            {
+                if (value > 0) _countSignAfter = value;
+            }
+        }
 
         public double this[int i, int j]
         {
@@ -133,6 +145,52 @@ namespace ComputationalMathematicsLabs.Lab_2
             }
 
             return result;
+        }
+
+        public double GetNorm()
+        {
+            double[] vector = new double[SizeI];
+            for (var i = 0; i < _sizeI; i++)
+            {
+                for (var j = 0; j < _sizeJ; j++)
+                {
+                    vector[i] += Math.Abs(matrix[i, j]);
+                }
+            }
+
+            return vector.Max();
+        }
+
+        public override string ToString()
+        {
+            var stringBuilder = new StringBuilder();
+            for (var i = 0; i < _sizeI; i++)
+            {
+                for (var j = 0; j < _sizeJ; j++)
+                {
+                    string value = " " + Math.Round(matrix[i, j], _countSignAfter) + " ;";
+                    var res = string.Format(@"{0," + (_countSignAfter + 6) + "}", value);
+                    stringBuilder.Append(res);
+                }
+
+                stringBuilder.Append(Environment.NewLine);
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        public string ToStringVector()
+        {
+            if (_sizeJ != 1) return ToString();
+            var stringBuilder = new StringBuilder();
+            for (var i = 0; i < _sizeI; i++)
+            {
+                string value = " " + Math.Round(matrix[i, 0], _countSignAfter) + " ;";
+                var res = string.Format(@"{0," + (_countSignAfter + 6) + "}", value);
+                stringBuilder.Append(res);
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }
