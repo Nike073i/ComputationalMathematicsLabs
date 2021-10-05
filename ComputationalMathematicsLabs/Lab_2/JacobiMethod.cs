@@ -9,6 +9,7 @@ namespace ComputationalMathematicsLabs.Lab_2
         private Matrix _matrixA;
         private Matrix _matrixFreeTerms;
         private double _epsilon;
+        private int lengthEps = 3;
         public JacobiMethod(double[,] aValues, double[] freeTermsVector, double epsilon)
         {
             if (aValues == null || freeTermsVector == null) throw new ArgumentNullException();
@@ -16,6 +17,8 @@ namespace ComputationalMathematicsLabs.Lab_2
             _matrixA = new Matrix(aValues);
             _matrixFreeTerms = new Matrix(freeTermsVector.Length, 1);
             _epsilon = epsilon;
+            string epsilonString = string.Format("{0:#,#.#############################}", epsilon);
+            lengthEps = epsilonString.Split(',')[1].Length;
             for (var i = 0; i < freeTermsVector.Length; i++)
             {
                 _matrixFreeTerms.SetRowValues(i, freeTermsVector[i]);
@@ -93,6 +96,7 @@ namespace ComputationalMathematicsLabs.Lab_2
             var result = x;
             var stringBuilder = new StringBuilder();
             stringBuilder.Append("      " + _iter);
+            result.CountSighAfter = lengthEps;
             stringBuilder.Append(result.ToStringVector());
             stringBuilder.Append(error != double.MaxValue ? error.ToString() : "");
             Console.WriteLine(stringBuilder.ToString());
