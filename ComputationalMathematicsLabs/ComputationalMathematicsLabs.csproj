@@ -40,6 +40,7 @@
     <Compile Include="Lab_2\IMatrix.cs" />
     <Compile Include="Lab_2\JacobiMethod.cs" />
     <Compile Include="Lab_2\Matrix.cs" />
+    <Compile Include="Lab_3\СonstantStepNewtonMethod.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
