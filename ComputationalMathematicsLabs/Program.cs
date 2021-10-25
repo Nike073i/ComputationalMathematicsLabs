@@ -15,7 +15,7 @@ namespace ComputationalMathematicsLabs
             epsilon = epsilon == 0 ? 0.000001 : epsilon;
             Console.WriteLine("Введите x1 (например: 1,0)");
             double.TryParse(Console.ReadLine(), out double startX1);
-            Console.WriteLine("Введите x1 (например: 1,0)");
+            Console.WriteLine("Введите x2 (например: 1,0)");
             double.TryParse(Console.ReadLine(), out double startX2);
             Console.WriteLine("1ый корень или 2ой: (например: 2)");
             int.TryParse(Console.ReadLine(), out int changeResult);
