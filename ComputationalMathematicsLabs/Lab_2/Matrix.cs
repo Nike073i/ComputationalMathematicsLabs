@@ -44,6 +44,18 @@ namespace ComputationalMathematicsLabs.Lab_2
             matrix = new double[sizeI, sizeJ];
         }
 
+        public Matrix(double[] newMatrix)
+        {
+            if (newMatrix == null) throw new ArgumentNullException();
+            _sizeI = newMatrix.Length;
+            _sizeJ = 1;
+            matrix = new double[_sizeI, _sizeJ];
+            for (var i = 0; i < _sizeI; i++)
+            {
+                SetRowValues(i,newMatrix[i]);
+            }
+        }
+
         public void SetRowValues(int i, params double[] values)
         {
             if (values.Length != _sizeJ) throw new ArgumentException("Неправильный размер подаваемой строки");

@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="Lab_4\SteepestDescentMethod.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
