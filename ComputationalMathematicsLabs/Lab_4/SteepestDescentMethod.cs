@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ComputationalMathematicsLabs.Lab_2;
+using System;
 using System.Text;
-using ComputationalMathematicsLabs.Lab_2;
 
 namespace ComputationalMathematicsLabs.Lab_4
 {
@@ -13,7 +13,7 @@ namespace ComputationalMathematicsLabs.Lab_4
 
         private int _iter;
 
-        public delegate double Function(double x1,double x2);
+        public delegate double Function(double x1, double x2);
         private readonly Function _functionOne;
         private readonly Function _functionTwo;
 
@@ -35,19 +35,19 @@ namespace ComputationalMathematicsLabs.Lab_4
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(string.Format(@"{0," + (_length + 4) + "}", _iter)).Append(" ; ");
 
-            var x1 = x[0,0];
+            var x1 = x[0, 0];
             stringBuilder.Append(string.Format(@"{0," + (_length + 4) + ":F" + (_length + 1) + "}", x1)).Append(" ; ");
 
             var x2 = x[1, 0];
             stringBuilder.Append(string.Format(@"{0," + (_length + 4) + ":F" + (_length + 1) + "}", x2)).Append(" ; ");
 
-            var fx1 = _functionOne(x1,x2);
+            var fx1 = _functionOne(x1, x2);
             stringBuilder.Append(string.Format(@"{0," + (_length + 4) + ":F" + (_length + 1) + "}", fx1)).Append(" ; ");
 
             var fx2 = _functionTwo(x1, x2);
             stringBuilder.Append(string.Format(@"{0," + (_length + 4) + ":F" + (_length + 1) + "}", fx2)).Append(" ; ");
 
-            var newX = new Matrix(new [] {x1-_alpha*fx1,x2-_alpha*fx2});
+            var newX = new Matrix(new[] { x1 - _alpha * fx1, x2 - _alpha * fx2 });
 
             var delta = x == _startX ? "" : oldX.Subtraction(x).GetNorm().ToString("F" + (_length + 1));
             stringBuilder.Append(string.Format(@"{0," + (_length + 4) + ":F" + (_length + 1) + "}", delta)).Append(" ; ");
@@ -73,7 +73,7 @@ namespace ComputationalMathematicsLabs.Lab_4
             sb.Append(string.Format(@"{0," + (_length + 6) + "}", "Norma"));
             Console.WriteLine(sb.ToString());
             _iter = 0;
-            SteepestDescent(_startX, new Matrix(2,1));
+            SteepestDescent(_startX, new Matrix(2, 1));
         }
     }
 }
