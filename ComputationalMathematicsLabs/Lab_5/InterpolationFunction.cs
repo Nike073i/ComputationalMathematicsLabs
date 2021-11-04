@@ -38,7 +38,7 @@ namespace ComputationalMathematicsLabs.Lab_5
                     return result;
                 });
             }
-            var LagrangePolynomial = new Function(x =>
+            var lagrangePolynomial = new Function(x =>
             {
                 double result = 0;
                 for (var i = 0; i < _yValues.Length; i++)
@@ -47,7 +47,7 @@ namespace ComputationalMathematicsLabs.Lab_5
                 }
                 return result;
             });
-            return LagrangePolynomial;
+            return lagrangePolynomial;
         }
         public double StartComputational()
         {
