@@ -1,4 +1,4 @@
-﻿using ComputationalMathematicsLabs.Lab_4;
+﻿using ComputationalMathematicsLabs.Lab_5;
 using System;
 
 namespace ComputationalMathematicsLabs
@@ -7,26 +7,13 @@ namespace ComputationalMathematicsLabs
     {
         public static void Main()
         {
-            var alphaOne = 0.2005;
-            var alphaTwo = 0.18;
-
-            Console.WriteLine("Введите эпсилон (например: 0,000001)");
-            double.TryParse(Console.ReadLine(), out double epsilon);
-            epsilon = epsilon == 0 ? 0.000001 : epsilon;
-            Console.WriteLine("Введите x1 (например: 1,0)");
-            double.TryParse(Console.ReadLine(), out double startX1);
-            Console.WriteLine("Введите x2 (например: 1,0)");
-            double.TryParse(Console.ReadLine(), out double startX2);
-            Console.WriteLine("1ый корень или 2ой: (например: 2)");
-            int.TryParse(Console.ReadLine(), out int changeResult);
-            var alpha = changeResult == 2 ? alphaTwo : alphaOne;
-            var startXMatrix = new[] { startX1, startX2 };
-            var sdm = new SteepestDescentMethod(epsilon, startXMatrix, alpha,
-                (x1, x2) => 2 * (Math.Sin(x1 + x2) - 1.2 * x1 - 0.1) * (Math.Cos(x1 + x2) - 1.2) +
-                            2 * (x1 * x1 + x2 * x2 - 1) * 2 * x1,
-                (x1, x2) => 2 * (Math.Sin(x1 + x2) - 1.2 * x1 - 0.1) * Math.Cos(x1 + x2) +
-                            2 * (x1 * x1 + x2 * x2 - 1) * 2 * x2);
-            sdm.StartComputational();
+            double[] xValues = new[] { 0.079, 0.637, 1.345, 2.095, 2.782 };
+            double[] yValues = new[] { -4.308, -0.739, 1.697, 4.208, 6.203 };
+            Console.WriteLine("Введите x0 (например: 1,0)");
+            double.TryParse(Console.ReadLine(), out double startX0);
+            startX0 = startX0 == 0 ? 1.982 : startX0;
+            var interpolation = new InterpolationFunction(xValues,yValues,startX0);
+            Console.WriteLine(interpolation.StartComputational());
             Console.ReadKey();
         }
     }
