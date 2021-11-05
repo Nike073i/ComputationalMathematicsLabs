@@ -67,12 +67,32 @@ namespace ComputationalMathematicsLabs.Lab_5
             return result;
         }
 
+        private int Factorial(int n)
+        {
+            if (n == 1 || n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+
         private Function GetInterpolationFormula(double[] incs, bool finalDifference)
         {
             Function result;
             if (finalDifference)
             {
-                result = new Function(x => x);
+                result = new Function(x =>
+                {
+                    double res = 0;
+                    double q = (x - _xValues[0]) / (_xValues[1] - _xValues[0]);
+                    for (var i = 0; i< incs.Length; i++)
+                    {
+                        double product = incs[i];
+                        for (var j = 1; j <= i; j++)
+                        {
+                            product *= (q - j + 1);
+                        }
+                        product /= Factorial(i);
+                    }
+                    return res;
+                });
             }
             else
             {
