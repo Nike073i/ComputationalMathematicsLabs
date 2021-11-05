@@ -90,6 +90,7 @@ namespace ComputationalMathematicsLabs.Lab_5
                             product *= (q - j + 1);
                         }
                         product /= Factorial(i);
+                        res += product;
                     }
                     return res;
                 });
