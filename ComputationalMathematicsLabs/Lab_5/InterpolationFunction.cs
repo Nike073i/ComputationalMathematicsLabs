@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ComputationalMathematicsLabs.Lab_5
 {
@@ -140,12 +141,40 @@ namespace ComputationalMathematicsLabs.Lab_5
             return GetInterpolationFormula(incs, finalDifference);
         }
 
+        private (double[],double[]) GetSplainParameters()
+        {
+            var aValues = new double[_yValues.Length - 1];
+            var bValues = new double[_yValues.Length - 1];
+            for (var i = 0; i< aValues.Length; i++)
+            {
+                aValues[i] = (_yValues[i + 1] - _yValues[i])/ (_xValues[i + 1] - _xValues[i]);
+                bValues[i] = _yValues[i] - aValues[i] * _xValues[i];
+            }
+            return (aValues,bValues);
+        }
+
+        public Function CreateLinearSpline()
+        {
+            var (aValues, bValues) = GetSplainParameters();
+            return new Function(x => {
+                if (x < _xValues[1]) return x * aValues[0] + bValues[0];
+                if (x > _xValues[_xValues.Length - 2]) return x * aValues[aValues.Length - 1] + bValues[bValues.Length - 1];
+                for (var i = 1; i< _xValues.Length-1;i++)
+                {
+                    if (x <= _xValues[i + 1]) return x * aValues[i] + bValues[i];
+                }
+                return double.MaxValue;
+            });
+        }
+
         public void StartComputational()
         {
             double resLagrange = CreatePolynomialLagrange()(_x0);
             double resNewton = CreatePolynomialNewton()(_x0);
+            double resLinearSplain = CreateLinearSpline()(_x0);
             Console.WriteLine(resLagrange);
             Console.WriteLine(resNewton);
+            Console.WriteLine(resLinearSplain);
         }
     }
 }
