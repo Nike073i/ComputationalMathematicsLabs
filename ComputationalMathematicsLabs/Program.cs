@@ -13,7 +13,7 @@ namespace ComputationalMathematicsLabs
             double.TryParse(Console.ReadLine(), out double startX0);
             startX0 = startX0 == 0 ? 1.982 : startX0;
             var interpolation = new InterpolationFunction(xValues,yValues,startX0);
-            Console.WriteLine(interpolation.StartComputational());
+            interpolation.StartComputational();
             Console.ReadKey();
         }
     }
