@@ -43,6 +43,11 @@
     <Compile Include="Lab_2\Matrix.cs" />
     <Compile Include="Lab_3\СonstantStepNewtonMethod.cs" />
     <Compile Include="Lab_5\InterpolationFunction.cs" />
+    <Compile Include="Lab_5_2\HalfDivisionMethod.cs" />
+    <Compile Include="Lab_5_2\Laboratory5_2.cs" />
+    <Compile Include="Lab_5_2\NewtonMethod.cs" />
+    <Compile Include="Lab_5_2\SvennMethod.cs" />
+    <Compile Include="Lab_5_2\UniformSearch.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
