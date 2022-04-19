@@ -20,7 +20,7 @@ namespace ComputationalMathematicsLabs.Lab_3
             _epsilon = epsilon;
             _startX = startX;
             _step = step;
-            myFuction = function;  
+            myFuction = function;
             string epsilonString = string.Format("{0:#,#.#############################}", epsilon);
             _length = epsilonString.Split(',')[1].Length;
         }
@@ -62,6 +62,25 @@ namespace ComputationalMathematicsLabs.Lab_3
             return result;
         }
 
+        private double StepMethodWithout(double x, double oldX)
+        {
+            var result = x;
+
+            double fxn = myFuction(x);
+            double denominator = fxn * _step;
+            double xn_h = x + _step;
+            double fxn_h = myFuction(xn_h);
+            double divider = fxn_h - fxn;
+            double newX = x - (denominator / divider);
+            if (Math.Abs(oldX - x) > _epsilon)
+            {
+                _iter++;
+                result = StepMethodWithout(newX, x);
+            }
+
+            return result;
+        }
+
         public void StartComputational()
         {
             StringBuilder sb = new StringBuilder();
@@ -77,5 +96,12 @@ namespace ComputationalMathematicsLabs.Lab_3
             _iter = 0;
             StepMethod(_startX, 0);
         }
+
+        public double Calc()
+        {
+            _iter = 0;
+            return StepMethodWithout(_startX, 0);
+        }
+ 
     }
 }

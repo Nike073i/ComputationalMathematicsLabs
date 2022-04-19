@@ -6,9 +6,13 @@
         Matrix Additional(Matrix matrixB);
         Matrix Subtraction(Matrix matrixB);
         Matrix Multiply(Matrix matrixB);
+        Matrix Multiply(double value);
         Matrix GetDiagonalMatrix();
         Matrix GetMatrixWithoutDiagonal();
         Matrix GetNegativeMatrix();
         double GetNorm();
+        double GetDeterminant2();
+        double GetEuclidNorm();
+        bool SylvesterCriterion2();
     }
 }

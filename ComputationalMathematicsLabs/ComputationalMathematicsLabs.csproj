@@ -48,6 +48,9 @@
     <Compile Include="Lab_5_2\NewtonMethod.cs" />
     <Compile Include="Lab_5_2\SvennMethod.cs" />
     <Compile Include="Lab_5_2\UniformSearch.cs" />
+    <Compile Include="Lab_6_2\FletcherRivsMethod.cs" />
+    <Compile Include="Lab_6_2\Laboratory6_2.cs" />
+    <Compile Include="Lab_6_2\NewtonMethod.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

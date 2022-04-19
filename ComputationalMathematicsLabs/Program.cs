@@ -1,4 +1,4 @@
-﻿using ComputationalMathematicsLabs.Lab_5_2;
+﻿using ComputationalMathematicsLabs.Lab_6_2;
 
 namespace ComputationalMathematicsLabs
 {
@@ -6,8 +6,8 @@ namespace ComputationalMathematicsLabs
     {
         public static void Main()
         {
-            Laboratory5_2 lab_5_2 = new Laboratory5_2();
-            lab_5_2.Start();
+            Laboratory6_2 lab_6_2 = new Laboratory6_2();
+            lab_6_2.Start();
         }
     }
 }
